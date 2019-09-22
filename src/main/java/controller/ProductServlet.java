@@ -3,6 +3,7 @@ package controller;
 import com.google.common.base.Throwables;
 import model.Product;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -40,7 +41,7 @@ public class ProductServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
         PrintWriter writer = response.getWriter();
@@ -66,7 +67,8 @@ public class ProductServlet extends HttpServlet {
             //ustawic wszystkie parametry
             writer.println("Product has been created.");
         } else {
-            writer.println("Integers value are not valid");
+            writer.println("Wrong value, Product has not been created");
+            request.getRequestDispatcher("/product.jsp").include(request,response);
         }
     }
 

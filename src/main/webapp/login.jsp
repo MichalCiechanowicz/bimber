@@ -17,7 +17,9 @@
     user:
     <input type="text" name="user"><br>
     password:
-    <input type="text" name="password">
+    <input type="text" name="password"><br>
+    <input type="submit" name="LOG IN">
+
 </form>
 </body>
 </html>
